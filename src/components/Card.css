@@ -1,0 +1,29 @@
+li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  gap: 10px;
+  border: 1px solid red;
+  width: 360px;
+  height: 160px;
+  justify-content: space-between;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+li > img {
+  width: 150px;
+  height: 150px;
+  border: 1px solid rgb(225, 25, 181);
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+}

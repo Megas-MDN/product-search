@@ -1,5 +1,7 @@
 # Project Product Search
 
+Fullstack application! By combining the product APIs from Buscapé and Mercado Livre, I have created a platform that allows you to view products from different categories and marketplaces. Additionally, you can use the search bar to find a specific product and filter the results by category and marketplace to help you find the right product.
+
 <hr>
 
 ## Application flow

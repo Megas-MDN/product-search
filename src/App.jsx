@@ -2,15 +2,17 @@
 
 import './App.css';
 import Form from './components/Form';
+import List from './components/List';
 // import useFetch from './hooks/useFetch';
 
 function App() {
   // const { fetchLoading, fetchData } = useFetch('https://scrapeme.live/shop/');
-  // console.log(fetchData);
+
   return (
     <main className='App'>
-      <h1>Tuffy</h1>
+      <h1>Product Search</h1>
       <Form />
+      <List />
     </main>
   );
 }

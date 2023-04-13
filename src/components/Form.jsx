@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './Form.css';
 function Form() {
   const [source, setSource] = useState('Todas');
   const [category, setCategory] = useState('Category');
@@ -18,6 +18,7 @@ function Form() {
   return (
     <form className='form-container'>
       <select
+        className='select-source'
         name='source'
         id='source'
         onChange={({ target: { value } }) => {
@@ -34,6 +35,7 @@ function Form() {
         ))}
       </select>
       <select
+        className='select-category'
         name='category'
         id='category'
         onChange={({ target: { value } }) => {
@@ -49,7 +51,11 @@ function Form() {
           </option>
         ))}
       </select>
-      <input type='text' placeholder='find a product' />
+      <input
+        type='text'
+        placeholder='find a product'
+        className='input-search'
+      />
       <button type='button'>Search</button>
     </form>
   );
