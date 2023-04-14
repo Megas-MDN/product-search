@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import ml from '../assets/logo-ml.png';
 import bscp from '../assets/logo-buscape.png';
+import { AiFillCaretDown } from 'react-icons/ai';
 import './List.css';
 
 const MAX = 5;
@@ -95,6 +96,25 @@ function List(props) {
           type='button'
         >{` Next Page: ${page + 1 <= MAX ? page + 1 : ''}`}</button>
       </div>
+      <button
+        type='button'
+        className='btn-pos up'
+        onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
+      >
+        <AiFillCaretDown size={60} />
+      </button>
+      <button
+        type='button'
+        className='btn-pos down'
+        onClick={() =>
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth',
+          })
+        }
+      >
+        <AiFillCaretDown size={60} />
+      </button>
     </section>
   );
 }
