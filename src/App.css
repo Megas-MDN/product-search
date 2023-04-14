@@ -1,3 +1,26 @@
 .App {
   margin: 0 auto;
 }
+
+.App > h1 {
+  display: flex;
+  gap: 5px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.App > h1 > a {
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  color: white;
+  transition: ease-in-out 1s;
+}
+
+.App > h1 > a:hover {
+  color: black;
+  background: rgba(255, 255, 255, 0.718);
+}

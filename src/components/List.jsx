@@ -70,20 +70,15 @@ function List(props) {
   return (
     <section className='section-container'>
       <ul className='list-container'>
-        <>
-          {cardList.length > 0 &&
-            cardList.map((el, i) => (
-              <>
-                {
-                  <Card
-                    key={`${i}-${el?.link}`}
-                    logo={el?.source === 'buscape' ? bscp : ml}
-                    {...el}
-                  />
-                }
-              </>
-            ))}
-        </>
+        {!!cardList &&
+          cardList.length > 0 &&
+          cardList.map((el, i) => (
+            <Card
+              key={`${i}-${el?.link}`}
+              logo={el?.source === 'buscape' ? bscp : ml}
+              {...el}
+            />
+          ))}
       </ul>
       <div className='pagination'>
         <button
@@ -91,14 +86,14 @@ function List(props) {
           name='prev'
           disabled={!prevVisible}
           type='button'
-        >{`<-- Previous page: ${page > 1 ? page - 1 : ''}`}</button>
+        >{`Previous page: ${page > 1 ? page - 1 : ''}`}</button>
 
         <button
           onClick={handleClick}
           disabled={!nextVisible}
           name='next'
           type='button'
-        >{` Next Page: ${page + 1 <= MAX ? page + 1 : ''} -->`}</button>
+        >{` Next Page: ${page + 1 <= MAX ? page + 1 : ''}`}</button>
       </div>
     </section>
   );

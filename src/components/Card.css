@@ -3,8 +3,9 @@ li {
   display: flex;
   align-items: center;
   align-content: center;
-  gap: 10px;
-  border: 1px solid red;
+  gap: 5px;
+  /* border: 1px solid red; */
+  border-top: 2px solid rgba(128, 128, 128, 0.657);
   width: 360px;
   height: 160px;
   justify-content: space-between;
@@ -15,15 +16,48 @@ li {
 li > img {
   width: 150px;
   height: 150px;
-  border: 1px solid rgb(225, 25, 181);
+  /* border: 1px solid rgb(225, 25, 181); */
 }
 
-.text-container {
-  font-size: 0.5rem;
+.text-container  {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* border: 1px solid gold; */
+  height: 100%;
 }
+
+.text-container > h2 {
+  font-size: 0.7rem;
+}
+
+.description {
+  font-size: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.price {
+  font-size: 1.1rem;
+  position: relative;
+}
+
+.price > span {
+  font-size: 0.8rem;
+  position: absolute;
+  top: -2px;
+  right: 15px;
+}
+
 .btn-container {
   display: flex;
   flex-direction: column;
+  /* border: 1px solid blueviolet; */
+  height: 100%;
+  justify-content: space-around;
+}
+
+.btn-container > button {
+  padding: 10px 5px;
 }
 
 .logo {
