@@ -19,22 +19,30 @@ function List(props) {
   const handleClick = async ({ target: { name } }) => {
     if (name === 'next') {
       setMin(max + 1);
-      setMax(max + props.pagination);
+      setMax(max + MAXLIST + 1);
       setPage(page + 1);
+      setPrevVisible(true);
     } else {
       setPage(page - 1);
       setMax(min - 1);
-      setMin(min - props.pagination);
+      setMin(min - MAXLIST);
+      if (page - 2 <= 0) {
+        setPrevVisible(false);
+      }
     }
   };
 
   const paginations = (minIndex, maxIndex) => {
-    console.log(minIndex, maxIndex, props.pagination);
     const arr = [];
     if (props.list.length === 0) return arr;
     for (let i = minIndex; i <= maxIndex; i += 1) {
       const item = props.list[i];
-      if (!item) return arr;
+      if (!item) {
+        setNextVisible(false);
+        return arr.length > 0 ? arr : cardList;
+      } else {
+        setNextVisible(true);
+      }
       arr.push(item);
     }
     return arr;
@@ -45,28 +53,12 @@ function List(props) {
   }, []);
 
   useEffect(() => {
-    console.log('May cards');
     setCardsList(paginations(min, max));
   }, [max, min]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [cardList]);
-
-  useEffect(() => {
-    if (page >= MAX) {
-      setNextVisible(false);
-    } else {
-      setNextVisible(true);
-    }
-    if (page <= 1) {
-      setPrevVisible(false);
-    } else {
-      setPrevVisible(true);
-    }
-    if (page > 5) setPage(5);
-    if (page < 1) setPage(1);
-  }, [page]);
 
   return (
     <section className='section-container'>

@@ -14,5 +14,5 @@ export default function useFetch(base, endpoint = '') {
     fetchResponse();
   }, [base, endpoint]);
 
-  return { fetchLoading, fetchData };
+  return { fetchLoading, fetchData, setFetchData, setFetchLoading };
 }

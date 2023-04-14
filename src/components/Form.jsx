@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Form.css';
-function Form() {
-  const [source, setSource] = useState('Todas');
-  const [category, setCategory] = useState('Category');
+
+function Form(props) {
+  const [source, setSource] = useState('');
+  const [category, setCategory] = useState('');
+  const [input, setInput] = useState('');
 
   const local = [
     { value: '', text: 'Todas' },
-    { value: 'mercadoLivre', text: 'Mercado Livre' },
+    { value: 'mercado_livre', text: 'Mercado Livre' },
     { value: 'buscape', text: 'Buscapé' },
   ];
   const cats = [
@@ -15,6 +18,18 @@ function Form() {
     { value: 'tv', text: 'TV' },
     { value: 'celular', text: 'Celular' },
   ];
+
+  const handleClick = async () => {
+    props.setFetchLoading(true);
+    const response = await axios.get(
+      `${
+        import.meta.env.VITE_URL_SEARCH
+      }q=${input.trim()}&cat=${category}&web=${source}`
+    );
+    props.setFetchLoading(false);
+    props.setFetchData(response.data);
+  };
+
   return (
     <form className='form-container'>
       <select
@@ -22,7 +37,6 @@ function Form() {
         name='source'
         id='source'
         onChange={({ target: { value } }) => {
-          console.log(value);
           setSource(value);
         }}
         value={source}
@@ -39,7 +53,6 @@ function Form() {
         name='category'
         id='category'
         onChange={({ target: { value } }) => {
-          console.log(value);
           setCategory(value);
         }}
         value={category}
@@ -53,10 +66,14 @@ function Form() {
       </select>
       <input
         type='text'
+        value={input}
         placeholder='find a product'
         className='input-search'
+        onChange={({ target: { value } }) => setInput(value)}
       />
-      <button type='button'>Search</button>
+      <button type='button' onClick={handleClick}>
+        Search
+      </button>
     </form>
   );
 }
