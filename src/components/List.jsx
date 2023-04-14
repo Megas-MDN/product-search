@@ -5,15 +5,52 @@ import bscp from '../assets/logo-buscape.png';
 import './List.css';
 
 const MAX = 5;
+const MAXLIST = 57;
 
-function List() {
+function List(props) {
   const [page, setPage] = useState(1);
   const [nextVisible, setNextVisible] = useState(true);
   const [prevVisible, setPrevVisible] = useState(false);
+  const [cardList, setCardsList] = useState([]);
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(MAXLIST);
 
-  const handleClick = ({ target: { name } }) => {
-    name === 'next' ? setPage(page + 1) : setPage(page - 1);
+  const handleClick = async ({ target: { name } }) => {
+    if (name === 'next') {
+      setMin(max + 1);
+      setMax(max + props.pagination);
+      setPage(page + 1);
+    } else {
+      setPage(page - 1);
+      setMax(min - 1);
+      setMin(min - props.pagination);
+    }
   };
+
+  const paginations = (minIndex, maxIndex) => {
+    console.log(minIndex, maxIndex, props.pagination);
+    const arr = [];
+    if (props.list.length === 0) return arr;
+    for (let i = minIndex; i <= maxIndex; i += 1) {
+      const item = props.list[i];
+      if (!item) return arr;
+      arr.push(item);
+    }
+    return arr;
+  };
+
+  useEffect(() => {
+    setCardsList(paginations(min, max));
+  }, []);
+
+  useEffect(() => {
+    console.log('May cards');
+    setCardsList(paginations(min, max));
+  }, [max, min]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, [cardList]);
 
   useEffect(() => {
     if (page >= MAX) {
@@ -33,24 +70,20 @@ function List() {
   return (
     <section className='section-container'>
       <ul className='list-container'>
-        <Card logo={ml} />
-        <Card logo={bscp} />
-        <Card logo={bscp} />
-        <Card logo={ml} />
-        <Card logo={ml} />
-        <Card logo={bscp} />
-        <Card logo={bscp} />
-        <Card logo={ml} />
-        <Card logo={ml} />
-        <Card logo={bscp} />
-        <Card logo={bscp} />
-        <Card logo={ml} />
-        <Card logo={ml} />
-        <Card logo={bscp} />
-        <Card logo={bscp} />
-        <Card logo={ml} />
-        <Card logo={ml} />
-        <Card logo={bscp} />
+        <>
+          {cardList.length > 0 &&
+            cardList.map((el, i) => (
+              <>
+                {
+                  <Card
+                    key={`${i}-${el?.link}`}
+                    logo={el?.source === 'buscape' ? bscp : ml}
+                    {...el}
+                  />
+                }
+              </>
+            ))}
+        </>
       </ul>
       <div className='pagination'>
         <button
