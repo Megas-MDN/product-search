@@ -24,7 +24,8 @@ function Form(props) {
     const response = await axios.get(
       `${
         import.meta.env.VITE_URL_SEARCH
-      }q=${input.trim()}&cat=${category}&web=${source}`
+      }q=${input.trim()}&cat=${category}&web=${source}`,
+      { headers: { Authorization: `${import.meta.env.VITE_HASH_ATT}` } }
     );
     props.setFetchLoading(false);
     props.setFetchData(response.data);
