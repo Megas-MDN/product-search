@@ -26,7 +26,7 @@ function App() {
         Product Search
       </h1>
       <Form {...{ setFetchData, setFetchLoading }} />
-      {fetchLoading && <p>Loading...</p>}
+      {fetchLoading && <p data-testid='loader'>Loading...</p>}
       {!fetchLoading && <List list={fetchData} pagination={pagination} />}
     </main>
   );
