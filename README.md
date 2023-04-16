@@ -2,15 +2,15 @@
 
 Fullstack application! By combining the product APIs from Buscapé and Mercado Livre, I have created a platform that allows you to view products from different categories and marketplaces. Additionally, you can use the search bar to find a specific product and filter the results by category and marketplace to help you find the right product.
 
-The deployment of this application can be found at the following address: [Deploy-frontend](https://product-search-production.up.railway.app/).
+The deployment of this application can be found at the following address: [Deploy-frontend](coming_soon).
 
-The link to the backend repository that serves this application can be found at the following address: [Repo-backend](https://github.com/Megas-MDN/buscape-api-web-scraping). As for the backend deployment link, it can be accessed at the following address: [Deploy-backend](https://buscape-api-web-scraping-production.up.railway.app/).
+The link to the backend repository that serves this application can be found at the following address: [Repo-backend](https://github.com/Megas-MDN/buscape-api-web-scraping). As for the backend deployment link, it can be accessed at the following address: [Deploy-backend](coming_soon).
 
 <hr>
 
 ## Application flow
 
-![application-running](https://i.imgur.com/eDGfN6H.gif)
+![application-running](https://i.imgur.com/8XsAxnN.gif)
 
 Firstly, upon entering the application's homepage ( / ), the frontend requests the products within the categories (cellphone, TV, and refrigerator) from the backend. The backend retrieves this information from the online platforms of Buscape and Mercado Livre, with the request being made upon loading the initial page. The backend will always consult these sites (Buscape and Mercado Livre).
 
