@@ -2,7 +2,7 @@ import React from 'react';
 import './Loader.css';
 const Loader = () => {
   return (
-    <div className='loader'>
+    <div className='loader' data-testid='loader'>
       <div className='bar1'></div>
       <div className='bar2'></div>
       <div className='bar3'></div>
