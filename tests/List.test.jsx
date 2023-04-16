@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { getAll } from './mocks/data';
 import App from '../src/App';
+import List from '../src/components/List';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import axios from 'axios';
 
@@ -24,7 +25,7 @@ describe('Testing rendered items', () => {
     await axios.get.mockResolvedValue({
       data: getAll,
     });
-    render(<App />);
+    render(<List list={getAll} source={'buscape'} />);
 
     await waitFor(() => {
       const section = screen.getByTestId('section-products');
@@ -36,7 +37,7 @@ describe('Testing rendered items', () => {
     await axios.get.mockResolvedValue({
       data: getAll,
     });
-    render(<App />);
+    render(<List list={getAll} />);
 
     await waitFor(() => {
       const cards = screen.getAllByTestId('card-product');
@@ -49,7 +50,7 @@ describe('Testing rendered items', () => {
     await axios.get.mockResolvedValue({
       data: getAll,
     });
-    render(<App />);
+    render(<List list={getAll} />);
 
     await waitFor(() => {
       const cards = screen.getAllByTestId('card-product');
@@ -68,7 +69,7 @@ describe('Testing rendered items', () => {
     await axios.get.mockResolvedValue({
       data: getAll,
     });
-    render(<App />);
+    render(<List list={getAll} />);
 
     await waitFor(() => {
       const next = screen.getByTestId('next-page');

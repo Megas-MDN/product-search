@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { getAll } from './mocks/data';
-import App from '../src/App';
+import Form from '../src/components/Form';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import axios from 'axios';
 
@@ -16,7 +16,7 @@ describe('Test product search', () => {
     await axios.get.mockResolvedValue({
       data: getAll,
     });
-    render(<App />);
+    render(<Form setFetchData={() => {}} setFetchLoading={() => {}} />);
     await waitFor(() => {
       const btn = screen.getByTestId('btn-source');
       const input = screen.getByTestId('input-search');
@@ -38,7 +38,7 @@ describe('Test product search', () => {
     await axios.get.mockResolvedValue({
       data: getAll,
     });
-    render(<App />);
+    render(<Form setFetchData={() => {}} setFetchLoading={() => {}} />);
     await waitFor(() => {
       const btn = screen.getByTestId('btn-source');
       const input = screen.getByTestId('input-search');
