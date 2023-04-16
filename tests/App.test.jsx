@@ -1,7 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
 
 import { describe, it, expect } from 'vitest';
 import App from '../src/App.jsx';
@@ -22,6 +21,7 @@ describe('Testing in App', () => {
     fireEvent.change(select, { target: { value: 'mercado_livre' } });
     expect(select.value).toBe('mercado_livre');
   });
+
   it('Should be select category tag in the screen', () => {
     render(<App />);
     const select = screen.getByTestId('category-input');

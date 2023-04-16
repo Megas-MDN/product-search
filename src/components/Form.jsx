@@ -70,9 +70,10 @@ function Form(props) {
         value={input}
         placeholder='find a product'
         className='input-search'
+        data-testid='input-search'
         onChange={({ target: { value } }) => setInput(value)}
       />
-      <button type='button' onClick={handleClick}>
+      <button type='button' onClick={handleClick} data-testid='btn-source'>
         Search
       </button>
     </form>

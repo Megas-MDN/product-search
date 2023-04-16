@@ -7,75 +7,56 @@ import axios from 'axios';
 vi.mock('axios');
 window.scrollTo = vi.fn();
 
-describe('Testing rendered items', () => {
+describe('Test product search', () => {
   beforeEach(() => {
     axios.get.mockReset();
   });
-  it('Checks if axios was called', async () => {
+
+  it('Checks if axios was called with query search', async () => {
     await axios.get.mockResolvedValue({
       data: getAll,
     });
     render(<App />);
-
-    expect(axios.get).toHaveBeenCalled();
-  });
-
-  it('Products section should appear on the screen', async () => {
-    await axios.get.mockResolvedValue({
-      data: getAll,
-    });
-    render(<App />);
-
     await waitFor(() => {
-      const section = screen.getByTestId('section-products');
-      expect(section).toBeInTheDocument();
-    });
-  });
+      const btn = screen.getByTestId('btn-source');
+      const input = screen.getByTestId('input-search');
 
-  it('Cards must be rendered', async () => {
-    await axios.get.mockResolvedValue({
-      data: getAll,
-    });
-    render(<App />);
-
-    await waitFor(() => {
-      const cards = screen.getAllByTestId('card-product');
-      expect(cards.length).toBe(getAll.length);
-    });
-  });
-
-  it('Cards must have the expected attributes', async () => {
-    parent.open = vi.fn();
-    await axios.get.mockResolvedValue({
-      data: getAll,
-    });
-    render(<App />);
-
-    await waitFor(() => {
-      const cards = screen.getAllByTestId('card-product');
-      const index = Math.floor(Math.random() * getAll.length);
-      const imgs = cards[index].querySelectorAll('img');
-      const btn = cards[index].querySelector('button');
-      expect(btn).toHaveTextContent(/go site/i);
+      fireEvent.change(input, { target: { value: 'xiaomi' } });
       fireEvent.click(btn);
-      expect(parent.open).toBeCalledWith(getAll[index].link);
-      expect(imgs.length).toBe(2);
-      expect(imgs[0].getAttribute('src')).toBe(getAll[index].srcImg);
     });
+    expect(axios.get).toHaveBeenLastCalledWith(
+      import.meta.env.VITE_URL_SEARCH + 'q=xiaomi&cat=&web=',
+      {
+        headers: {
+          Authorization: import.meta.env.VITE_HASH_ATT,
+        },
+      }
+    );
   });
 
-  it('Pagination buttons must be on screen and disabled', async () => {
+  it('Checks if axios was called with query search', async () => {
     await axios.get.mockResolvedValue({
       data: getAll,
     });
     render(<App />);
-
     await waitFor(() => {
-      const next = screen.getByTestId('next-page');
-      const prev = screen.getByTestId('prev-page');
+      const btn = screen.getByTestId('btn-source');
+      const input = screen.getByTestId('input-search');
+      const cat = screen.getByTestId('category-input');
+      const web = screen.getByTestId('source-input');
 
-      expect(next).toBeDisabled();
-      expect(prev).toBeDisabled();
+      fireEvent.change(web, { target: { value: 'buscape' } });
+      fireEvent.change(cat, { target: { value: 'celular' } });
+      fireEvent.change(input, { target: { value: 'iphone' } });
+      fireEvent.click(btn);
     });
+    expect(axios.get).toHaveBeenLastCalledWith(
+      import.meta.env.VITE_URL_SEARCH + 'q=iphone&cat=celular&web=buscape',
+      {
+        headers: {
+          Authorization: import.meta.env.VITE_HASH_ATT,
+        },
+      }
+    );
   });
 });
