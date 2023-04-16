@@ -21,10 +21,13 @@ function Form(props) {
 
   const handleClick = async () => {
     props.setFetchLoading(true);
+    const queryClean = input
+      ? input.normalize('NFD').replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, '')
+      : '';
     const response = await axios.get(
       `${
         import.meta.env.VITE_URL_SEARCH
-      }q=${input.trim()}&cat=${category}&web=${source}`,
+      }q=${queryClean}&cat=${category}&web=${source}`,
       { headers: { Authorization: `${import.meta.env.VITE_HASH_ATT}` } }
     );
     props.setFetchLoading(false);
