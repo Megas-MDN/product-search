@@ -8,6 +8,7 @@ import useFetch from './hooks/useFetch';
 import { BsGithub } from 'react-icons/bs';
 import { TbWorldWww } from 'react-icons/tb';
 import { AiFillDatabase } from 'react-icons/ai';
+import Loader from './components/Loader';
 
 function App() {
   const [pagination, setPagination] = useState(0);
@@ -29,7 +30,11 @@ function App() {
         {fetchData?.source === 'database' ? <AiFillDatabase /> : <TbWorldWww />}
       </h1>
       <Form {...{ setFetchData, setFetchLoading }} />
-      {fetchLoading && <p data-testid='loader'>Loading...</p>}
+      {fetchLoading && (
+        <>
+          <Loader />
+        </>
+      )}
       {!fetchLoading && (
         <List
           list={fetchData.results}
