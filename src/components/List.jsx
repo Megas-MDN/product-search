@@ -61,7 +61,7 @@ function List(props) {
   }, [cardList]);
 
   return (
-    <section className='section-container'>
+    <section className='section-container' data-testid='section-products'>
       <ul className='list-container'>
         {!!cardList &&
           cardList.length > 0 &&
@@ -79,6 +79,7 @@ function List(props) {
           name='prev'
           disabled={!prevVisible}
           type='button'
+          data-testid='prev-page'
         >{`Previous page: ${page > 1 ? page - 1 : ''}`}</button>
 
         <button
@@ -86,6 +87,7 @@ function List(props) {
           disabled={!nextVisible}
           name='next'
           type='button'
+          data-testid='next-page'
         >{` Next Page: ${page + 1 <= MAX ? page + 1 : ''}`}</button>
       </div>
       <button

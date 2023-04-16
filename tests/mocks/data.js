@@ -1,5 +1,30 @@
 export const getAll = [
   {
+    link: 'https://www.buscape.com.br/geladeira/geladeira-electrolux-tf42-frost-free-duplex-382-litros-painel-blue-touch?_lc=88&searchterm=',
+    altImg: 'Imagem de Geladeira Electrolux TF42 Frost Free Duplex 382 Litros',
+    srcImg: 'https://i.zst.com.br/thumbs/45/c/3b/601737893.jpg',
+    desc: 'Geladeira Electrolux TF42 Frost Free Duplex 382 Litros4.6 (35) Menor preço via Magazine Luiza',
+    price: 2725.06,
+    source: 'buscape',
+  },
+  {
+    link: 'https://www.mercadolivre.com.br/geladeira-frost-free-midea-md-rt453fga04-inox-com-freezer-425l-220v/p/MLB18213331',
+    altImg:
+      'Imagem de Geladeira Frost Free Midea Md-rt453fga04 Inox Com Freezer 425l 220v',
+    srcImg: 'http://http2.mlstatic.com/D_644972-MLA48872894969_012022-I.jpg',
+    desc: 'Marca Midea Modelo detalhado MD-RT453FGA042 Condição do item Novo Modelo MD-RT453FGA04 Peso 70 kg',
+    price: 2957.18,
+    source: 'mercado_livre',
+  },
+  {
+    link: 'https://www.mercadolivre.com.br/positivo-p26-dual-sim-32-mb-preto-32-mb-ram/p/MLB15981681',
+    altImg: 'Imagem de Positivo P26 Dual Sim 32 Mb Preto 32 Mb Ram',
+    srcImg: 'http://http2.mlstatic.com/D_812753-MLA44404709272_122020-I.jpg',
+    desc: 'Marca Positivo Condição do item Novo Modelo P26 Modelo do processador Spreadtrum SC6531E',
+    price: 89.7,
+    source: 'mercado_livre',
+  },
+  {
     link: 'https://www.mercadolivre.com.br/geladeira-frost-free-consul-crm56h-inox-com-freezer-450l-220v/p/MLB18172992',
     altImg:
       'Imagem de Geladeira Frost Free Consul Crm56h Inox Com Freezer 450l 220v',

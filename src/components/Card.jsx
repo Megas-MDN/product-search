@@ -15,7 +15,7 @@ function Card(props) {
       .join(' ');
   };
   return (
-    <li className='card-container'>
+    <li className='card-container' data-testid='card-product'>
       <img src={props?.srcImg} alt={props?.altImg} />
       <article className='text-container'>
         <h2>{cropText(props?.altImg?.replace('Imagem de ', ''))}</h2>
