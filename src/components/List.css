@@ -1,0 +1,64 @@
+.section-container {
+  width: 100%;
+  position: relative;
+}
+.list-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.pagination > button {
+  padding: 5px 5px;
+}
+
+.btn-pos {
+  position: fixed;
+  background: none;
+  border: 0.5px solid grey;
+  border-radius: 50%;
+  opacity: 0.3;
+  transition: ease-in-out 0.5s;
+ color: black;
+}
+
+.down {
+  top: 120px;
+  left: 150px;
+}
+
+.up {
+  bottom: 50px;
+  left: 150px;
+  rotate: 180deg;
+}
+
+.btn-pos:hover {
+  opacity: 1;
+  border: none;
+  color: white;
+}
+
+@media (max-width: 730px)
+{
+  .list-container
+   {
+    grid-template-columns: 1fr;
+   }
+
+   .down {
+    top: 150px;
+    left: 0;
+  }
+  
+  .up {
+    bottom: 50px;
+    left: 0;
+  }
+}

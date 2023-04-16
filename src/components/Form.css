@@ -1,0 +1,45 @@
+.form-container {
+  /* border: 1px solid red; */
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px
+}
+
+.form-container > input {
+  flex: 2;
+  padding: 5px;
+}
+
+.form-container > button {
+  padding: 5px 15px;
+}
+
+@media (max-width: 535px)
+{ 
+  .form-container {
+    display: grid;
+    /* border: 1px solid blue  */
+  }
+  .input-search  {
+    grid-area: search;
+  }
+  .form-container  > button{
+    grid-area: goSearch;
+  }
+
+  .select-category  {
+    grid-area: cat;
+    padding: 5px;
+  }
+
+  .select-source  {
+    grid-area: loc;
+  }
+  
+  .form-container {
+    grid-template-areas: 
+    "search search search goSearch"
+    "cat cat loc loc";
+  }
+}

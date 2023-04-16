@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+
+import { useEffect } from 'react';
+import './App.css';
+import Form from './components/Form';
+import List from './components/List';
+import useFetch from './hooks/useFetch';
+import { BsGithub } from 'react-icons/bs';
+import { TbWorldWww } from 'react-icons/tb';
+import { AiFillDatabase } from 'react-icons/ai';
+import Loader from './components/Loader';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [pagination, setPagination] = useState(0);
+  const { fetchLoading, fetchData, setFetchData, setFetchLoading } = useFetch(
+    import.meta.env.VITE_URL_GETALL
+  );
+
+  useEffect(() => {
+    setPagination(Math.ceil(fetchData.length / 5));
+  }, [fetchData]);
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+    <main className='App'>
+      <h1>
+        <a href='https://github.com/Megas-MDN/product-search' target='_black'>
+          <BsGithub />
         </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+        Product Search
+        {fetchData?.source === 'database' ? <AiFillDatabase /> : <TbWorldWww />}
+      </h1>
+      <Form {...{ setFetchData, setFetchLoading }} />
+      {fetchLoading && (
+        <>
+          <Loader />
+        </>
+      )}
+      {!fetchLoading && (
+        <List
+          list={fetchData.results}
+          pagination={pagination}
+          source={fetchData.source}
+        />
+      )}
+    </main>
+  );
 }
 
-export default App
+export default App;
