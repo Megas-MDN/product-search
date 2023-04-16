@@ -49,7 +49,12 @@ function List(props) {
   };
 
   useEffect(() => {
-    setCardsList(paginations(min, max));
+    if (props.list.length === 0) {
+      setNextVisible(false);
+      setCardsList([]);
+    } else {
+      setCardsList(paginations(min, max));
+    }
   }, []);
 
   useEffect(() => {
