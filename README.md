@@ -2,9 +2,9 @@
 
 Fullstack application! By combining the product APIs from Buscapé and Mercado Livre, I have created a platform that allows you to view products from different categories and marketplaces. Additionally, you can use the search bar to find a specific product and filter the results by category and marketplace to help you find the right product.
 
-The deployment of this application can be found at the following address: [Deploy-frontend](coming_soon).
+The deployment of this application can be found at the following address: [Deploy-frontend](https://product-search-production.up.railway.app/).
 
-The link to the backend repository that serves this application can be found at the following address: [Repo-backend](https://github.com/Megas-MDN/buscape-api-web-scraping). As for the backend deployment link, it can be accessed at the following address: [Deploy-backend](coming_soon).
+The link to the backend repository that serves this application can be found at the following address: [Repo-backend](https://github.com/Megas-MDN/buscape-api-web-scraping). As for the backend deployment link, it can be accessed at the following address: [Deploy-backend](https://buscape-api-web-scraping-production.up.railway.app/).
 
 <hr>
 
@@ -12,9 +12,9 @@ The link to the backend repository that serves this application can be found at 
 
 ![application-running](https://i.imgur.com/8XsAxnN.gif)
 
-Firstly, upon entering the application's homepage ( / ), the frontend requests the products within the categories (cellphone, TV, and refrigerator) from the backend. The backend retrieves this information from the online platforms of Buscape and Mercado Livre, with the request being made upon loading the initial page. The backend will always consult these sites (Buscape and Mercado Livre).
+Firstly, upon entering the application's homepage ( / ), the frontend requests the products within the categories (celular, tv e geladeira) from the backend. The backend retrieves this information from the online platforms of Buscape and Mercado Livre, with the request being made upon loading the initial page. The backend will always consult these sites (Buscape and Mercado Livre).
 
-When performing a search on the application, the frontend sends information such as the category (TV, cell phone, refrigerator, or all) and the store (Buscapé, Mercado Livre, or all), in addition to the content entered in the search field. The request also includes a secret authentication key in the header, as the backend needs to check if a search with the same fields has been performed previously.
+When performing a search on the application, the frontend sends information such as the category (celular, tv e geladeira, or todas) and the store (Buscapé, Mercado Livre, or all), in addition to the content entered in the search field. The request also includes a secret authentication key in the header, as the backend needs to check if a search with the same fields has been performed previously.
 
 If the search has been performed previously, the backend returns the results stored in the database. Otherwise, the backend performs the search on the official platforms (Buscapé and Mercado Livre) and checks if the secret key sent in the request header matches the secret key stored in the backend. If the keys match, the result of the new search will be stored in the database. If they do not match, the search result will be sent but not stored in the database, in order to protect against malicious inputs.
 
@@ -95,7 +95,6 @@ To run this project, you will need to add the following environment variables to
 - [Mongo DB Atlas](https://www.mongodb.com/atlas/database) : Data base
 - [Vitest](https://vitest.dev/) : Tests
 - [Railway](https://railway.app/) : Deploy developer mode
-- [Vercel](https://vercel.com/) : Deploy production mode
 
 <hr>
 <p align="center">
