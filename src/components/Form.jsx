@@ -28,7 +28,12 @@ function Form(props) {
       `${
         import.meta.env.VITE_URL_SEARCH
       }q=${queryClean}&cat=${category}&web=${source}`,
-      { headers: { Authorization: `${import.meta.env.VITE_HASH_ATT}` } }
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          Authorization: `${import.meta.env.VITE_HASH_ATT}`,
+        },
+      }
     );
     props.setFetchLoading(false);
     props.setFetchData(response.data);

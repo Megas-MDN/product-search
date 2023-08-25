@@ -7,7 +7,11 @@ export default function useFetch(base, endpoint = '') {
 
   useEffect(() => {
     const fetchResponse = async () => {
-      const request = await axios.get(`${base}${endpoint}`);
+      const request = await axios.get(`${base}${endpoint}`, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
       setFetchLoading(false);
       setFetchData(request.data);
     };
